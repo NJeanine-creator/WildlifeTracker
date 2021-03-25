@@ -1,0 +1,20 @@
+body{
+background-color: gray;
+}
+
+.pform{
+background-color: white;
+}
+
+.lsight{
+background-color: darkgreen;
+color:white;
+}
+
+.jumbotron {
+  height:100%;
+  width:100%;
+  background-color: darkgreen;
+  color:white;
+  text-transform: uppercase;
+}

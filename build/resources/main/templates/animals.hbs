@@ -1,0 +1,20 @@
+
+{{#partial "content"}}
+
+    <h1>Endangered Animals</h1>
+    <hr>
+    {{#if animals}}
+        <ul>
+            {{#each animals}}
+                <li id="site"><a href="/animal-details/{{id}}">{{name}}</a></li>
+                <hr>
+            {{/each}}
+        </ul>
+
+
+    {{else}}
+        <p style="color:white;">No Animals Yet.</p>
+    {{/if}}
+
+{{/partial}}
+{{> layout.hbs }}

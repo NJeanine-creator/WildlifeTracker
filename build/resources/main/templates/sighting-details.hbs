@@ -1,0 +1,23 @@
+{{#partial "content"}}
+    <div id="site">
+        <hr>
+        <p class="font-weight-bold">Location: {{ sightings.location }}</p>
+        <hr>
+        <p class="font-weight-bold">Ranger Name: {{ sightings.rangername }}</p>
+        <hr>
+        <p class="font-weight-bold">Animal: {{ sightings.animalid }}</p>
+        <hr>
+        <p class="font-weight-bold">Animal name: {{ animal.name }}</p>
+        <hr>
+        <p class="font-weight-bold">Animal health: {{ animal.health }}</p>
+        <hr>
+        <p class="font-weight-bold">Animal age: {{ animal.age }}</p>
+        <hr>
+        <p class="font-weight-bold">Animal Time: {{ sightings.time }}</p>
+        <hr>
+
+    </div>
+
+{{/partial}}
+
+{{> layout.hbs}}
