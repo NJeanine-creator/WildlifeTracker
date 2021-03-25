@@ -1,114 +1,93 @@
 import org.sql2o.Connection;
-import org.sql2o.Sql2oException;
 
-import java.sql.Timestamp;
-import java.util.Date;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class Animal extends WildAnimals {
+public  class Animal {
+    public int id;
+    public String name;
+    public String type;
 
-    public static final String DATABASE_TYPE = "Not Endangered";
-
-    public  Animal(String name, String health, String age){
-        this.name = name;
-        this.dateAdded = new Timestamp(new Date().getTime());
-        type = DATABASE_TYPE;
-        this.health = health;
-        this.age = age;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+    public Animal(String name){
+        this.name=name;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public int getId() {
+        return id;
+    }
+    public static List<EndangeredAnimal> all() {
+        String sql = "SELECT * FROM animals ";
+        try(Connection con = DB.sql2o.open()) {
+            return con.createQuery(sql)
+                    .throwOnMappingFailure(false)
+                    .executeAndFetch(EndangeredAnimal.class);
+        }
     }
 
-    public Timestamp getDateAdded() {
-        return dateAdded;
+    public void save() {
+        try(Connection con = DB.sql2o.open()) {
+            String sql = "INSERT INTO animals (name, type) VALUES (:name, :type)";
+            this.id = (int) con.createQuery(sql, true)
+                    .addParameter("name", this.name)
+                    .addParameter("type", this.type)
+                    .executeUpdate()
+                    .getKey();
+        }
     }
+    public List<Object> getAnimals() {
+        List<Object> allAnimals = new ArrayList<Object>();
 
-    public void setDateAdded(Timestamp dateAdded) {
-        this.dateAdded = dateAdded;
+        try(Connection con = DB.sql2o.open()) {
+            String sqlSighting = "SELECT * FROM animals WHERE animalid=:id";
+            List<Sighting> animals = con.createQuery(sqlSighting)
+                    .addParameter("id", this.id)
+                    .throwOnMappingFailure(false)
+                    .executeAndFetch(Sighting.class);
+            allAnimals.addAll(animals);
+
+            String sqlEndangeredAnimal = "SELECT * FROM animals WHERE animalid=:id AND type='endangered';";
+            List<Sighting> endangeredAnimals = con.createQuery(sqlEndangeredAnimal)
+                    .addParameter("id", this.id)
+                    .throwOnMappingFailure(false)
+                    .executeAndFetch(Sighting.class);
+            allAnimals.addAll(endangeredAnimals);
+        }
+
+        return allAnimals;
     }
-
-    public String getAge() {
-        return age;
+    public static void update(int id, String name) {
+        try (Connection con = DB.sql2o.open()) {
+            String sql = "UPDATE animals SET name = :name WHERE id = :id";
+            con.createQuery(sql)
+                    .addParameter("name", name)
+                    .addParameter("id", id)
+                    .throwOnMappingFailure(false)
+                    .executeUpdate();
+        }
     }
-
-    public void setAge(String age) {
-        this.age = age;
+    public void delete() {
+        try(Connection con = DB.sql2o.open()) {
+            String sql = "DELETE FROM animals WHERE id = :id;";
+            con.createQuery(sql)
+                    .addParameter("id", this.id)
+                    .executeUpdate();
+        }
     }
-
-    public String getHealth() {
-        return health;
-    }
-
-    public void setHealth(String health) {
-        this.health = health;
-    }
-
-    public static String getDatabaseType() {
-        return DATABASE_TYPE;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Animal)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
         Animal animal = (Animal) o;
-        return getAge().equals(animal.getAge()) &&
-                getHealth().equals(animal.getHealth());
+        return Objects.equals(name, animal.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getAge(), getHealth());
-    }
-
-    public void saveAnimal() {
-        try(Connection con = DB.sql2o.open()) {
-            String sql = "INSERT INTO animals (name, health, age, dateadded, type) VALUES (:name, :health, :age, :dateAdded, :type)";
-            this.id = (int) con.createQuery(sql, true)
-                    .addParameter("name", getName())
-                    .addParameter("health", getHealth())
-                    .addParameter("age", getAge())
-                    .addParameter("dateAdded", getDateAdded())
-                    .addParameter("type", getDatabaseType())
-                    .executeUpdate()
-                    .getKey();
-        }catch (Sql2oException ex) {
-            System.out.println(ex);
-        }
-
-    }
-
-    public static List<Animal> getAnimals() {
-        String sql = "SELECT * FROM animals WHERE type =:type;";
-        try(Connection con = DB.sql2o.open()) {
-            return con.createQuery(sql)
-                    .addParameter("type",getDatabaseType())
-                    .executeAndFetch(Animal.class);
-        }
-    }
-
-    public int getId() {
-
-        return id;
-    }
-    public static Animal find(int id) {
-        try(Connection con = DB.sql2o.open()) {
-            String sql = "SELECT * FROM animals where id =:id;";
-            Animal animal = con.createQuery(sql)
-                    .addParameter("id", id)
-                    .executeAndFetchFirst(Animal.class);
-            return animal;
-        }
+        return Objects.hash(name);
     }
 }
