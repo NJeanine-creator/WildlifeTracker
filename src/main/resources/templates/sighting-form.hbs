@@ -1,0 +1,23 @@
+{{#partial "content"}}
+
+    <form action="/posts/sightings/new" method="post" >
+        <label for="location">Location</label>
+        <input id="location" name="location" type="text" >
+        <br>
+        <label for="rangername">Ranger Name</label>
+        <input id="rangername" name="rangername" type="text" >
+        <br>
+        <label for="animalid">Select Animal:</label>
+        <select id="animalid" name="animalid">
+            {{#each animals}}
+                <option value="{{id}}">{{name}}</option>
+            {{/each}}
+        </select>
+        <p>Add a new animal?<a href="/posts/squads/new">Click Here</a></p>
+        <button id="bSite" style="color:White"; type="submit" class="btn btn-outline-success">Sight</button>
+    </form>
+
+
+{{/partial}}
+
+{{> layout.hbs}}

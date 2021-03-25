@@ -1,0 +1,29 @@
+{{#partial "content"}}
+
+    <h2>Add Animal</h2>
+    <div id="site2">
+        <form action="/posts/animals/new" method="post" >
+            <label for="name">Animal Name</label>
+            <input id="name" name="name" type="text" >
+            <br>
+            <label for="health">Health</label>
+            <select id="health" name="health">
+                <option value="healthy">Healthy</option>
+                <option value="ill">Ill</option>
+                <option value="okay">Okay</option>
+            </select>
+            <br>
+            <label for="age">Age</label>
+            <select id="age" name="age">
+                <option value="newborn">NewBorn</option>
+                <option value="young">Young</option>
+                <option value="adult">Adult</option>
+            </select>
+            <br><br>
+
+            <button id="bSite" style="color:White"; type="submit" class="btn btn-outline-success">Create</button>
+        </form>
+    </div>
+{{/partial}}
+
+{{> layout.hbs}}
