@@ -1,0 +1,72 @@
+{{#partial "content"}}
+    <div class="container pt-5">
+        <div class="row">
+            <div class="col-md-6">
+                <h2 class="detail">Thriving Animal List</h2>
+                <hr>
+                {{#if thrivingAnimals}}
+                {{#each thrivingAnimals}}
+                    <div class="animals text-white">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4>Animal Name:</h4>
+                               <p class="detail"> {{name}}</p>
+                                <h4>Type:</h4>
+                                <p class="detail">{{type}}</p>
+                            </div>
+                            <div class="col-md-6">
+                                <h4>Age:</h4>
+                               <p class="detail"> {{age}}</p>
+                                <h4>Health Status:</h4>
+                                <p class="detail">{{health}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                {{/each}}
+                {{else}}
+                <h3 class="text-info">No thriving animals available in the database</h3>
+              {{/if}}
+
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <form action="/new/thriving" class="p-5" method="post">
+                        <h2>Add thriving animal</h2>
+                        <div class="row pt-3">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="name">Animal Name</label>
+                                    <input type="text" placeholder="Name" name="name" required class="form-control">                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="power">Animal Age</label>
+                                    <select name="age" id="age" class="form-control text-info">
+                                        {{#each ageTypes}}
+                                        <option value="{{this}}" class="form-control text-info">{{this}}</option>
+                                    {{/each}}
+                                    </select>
+
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="health">Health Status</label>
+                                        <select name="health" id="health" class="form-control text-info">
+                                    {{#each healthTypes}}
+                                            <option value="{{this}}" class="form-control text-info">{{this}}</option>
+                                    {{/each}}
+                                        </select>
+
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-outline-success float-right" >SUBMIT ANIMAL</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{{/partial}}
+{{> layout.hbs}}
