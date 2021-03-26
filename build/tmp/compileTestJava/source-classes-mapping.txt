@@ -1,7 +1,7 @@
-SightingTest.java
- SightingTest
 DatabaseRule.java
  DatabaseRule
+SightingTest.java
+ SightingTest
 AnimalTest.java
  AnimalTest
 EndangeredAnimalTest.java

@@ -7,7 +7,7 @@ import static org.junit.Assert.*;
 
 public class SightingTest {
     public Sighting setupSighting() {
-        return new Sighting("Zone A", "Zuma", 1);
+        return new Sighting("Zone A", "Jeanine", 1);
     }
 
     @Rule
@@ -28,7 +28,7 @@ public class SightingTest {
     @Test
     public void Sighting_instanciatesRangerName_true() {
         Sighting testSighting = setupSighting();
-        assertEquals("Zuma", testSighting.getRangername());
+        assertEquals("Jeanine", testSighting.getRangername());
     }
 
     @Test

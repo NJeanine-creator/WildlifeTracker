@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="SightingTest" tests="10" skipped="0" failures="2" errors="0" timestamp="2021-03-26T11:00:30" hostname="jeanine-VivoBook-15-ASUS-Laptop-X540UAR" time="1.862">
+<testsuite name="SightingTest" tests="10" skipped="0" failures="2" errors="0" timestamp="2021-03-26T12:03:01" hostname="jeanine-VivoBook-15-ASUS-Laptop-X540UAR" time="1.114">
   <properties/>
-  <testcase name="all_returnsAllInstancesOfSighting_true" classname="SightingTest" time="0.871">
+  <testcase name="all_returnsAllInstancesOfSighting_true" classname="SightingTest" time="0.517">
     <failure message="org.sql2o.Sql2oException: Error in executeUpdate, ERROR: duplicate key value violates unique constraint &quot;sightings_pkey&quot;&#10;  Detail: Key (id)=(1) already exists." type="org.sql2o.Sql2oException">org.sql2o.Sql2oException: Error in executeUpdate, ERROR: duplicate key value violates unique constraint &quot;sightings_pkey&quot;
   Detail: Key (id)=(1) already exists.
 	at org.sql2o.Query.executeUpdate(Query.java:527)
-	at Sighting.save(Sighting.java:75)
+	at Sighting.save(Sighting.java:73)
 	at SightingTest.all_returnsAllInstancesOfSighting_true(SightingTest.java:67)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
@@ -69,12 +69,12 @@ Caused by: org.postgresql.util.PSQLException: ERROR: duplicate key value violate
 	... 51 more
 </failure>
   </testcase>
-  <testcase name="Sightings_successfullyAddsAnimalToDatabase_List" classname="SightingTest" time="0.308"/>
-  <testcase name="find_returnsSightingWithSameId_secondSighting" classname="SightingTest" time="0.129">
+  <testcase name="Sightings_successfullyAddsAnimalToDatabase_List" classname="SightingTest" time="0.137"/>
+  <testcase name="find_returnsSightingWithSameId_secondSighting" classname="SightingTest" time="0.128">
     <failure message="org.sql2o.Sql2oException: Error in executeUpdate, ERROR: duplicate key value violates unique constraint &quot;sightings_pkey&quot;&#10;  Detail: Key (id)=(1) already exists." type="org.sql2o.Sql2oException">org.sql2o.Sql2oException: Error in executeUpdate, ERROR: duplicate key value violates unique constraint &quot;sightings_pkey&quot;
   Detail: Key (id)=(1) already exists.
 	at org.sql2o.Query.executeUpdate(Query.java:527)
-	at Sighting.save(Sighting.java:75)
+	at Sighting.save(Sighting.java:73)
 	at SightingTest.find_returnsSightingWithSameId_secondSighting(SightingTest.java:77)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
@@ -138,13 +138,13 @@ Caused by: org.postgresql.util.PSQLException: ERROR: duplicate key value violate
 	... 51 more
 </failure>
   </testcase>
-  <testcase name="Sighting_instanciatesRangerName_true" classname="SightingTest" time="0.026"/>
-  <testcase name="Sighting_instanciatesWithLocation_true" classname="SightingTest" time="0.029"/>
-  <testcase name="Sighting_instanciatesRangerAnimalId_true" classname="SightingTest" time="0.03"/>
-  <testcase name="Sighting_instanciatesCorrectly_true" classname="SightingTest" time="0.031"/>
-  <testcase name="Sightings_returnIfnameIsSame_true" classname="SightingTest" time="0.03"/>
-  <testcase name="delete_deletesFireMonster_true" classname="SightingTest" time="0.291"/>
-  <testcase name="save_assignsIdToSighting" classname="SightingTest" time="0.113"/>
+  <testcase name="Sighting_instanciatesRangerName_true" classname="SightingTest" time="0.029"/>
+  <testcase name="Sighting_instanciatesWithLocation_true" classname="SightingTest" time="0.017"/>
+  <testcase name="Sighting_instanciatesRangerAnimalId_true" classname="SightingTest" time="0.017"/>
+  <testcase name="Sighting_instanciatesCorrectly_true" classname="SightingTest" time="0.017"/>
+  <testcase name="Sightings_returnIfnameIsSame_true" classname="SightingTest" time="0.019"/>
+  <testcase name="delete_deletesFireMonster_true" classname="SightingTest" time="0.124"/>
+  <testcase name="save_assignsIdToSighting" classname="SightingTest" time="0.106"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[[Test worker] WARN org.sql2o.Connection - Could not roll back transaction. message: {}
 org.postgresql.util.PSQLException: Cannot rollback when autoCommit is enabled.
@@ -152,7 +152,7 @@ org.postgresql.util.PSQLException: Cannot rollback when autoCommit is enabled.
 	at org.sql2o.Connection.rollback(Connection.java:115)
 	at org.sql2o.Connection.onException(Connection.java:56)
 	at org.sql2o.Query.executeUpdate(Query.java:526)
-	at Sighting.save(Sighting.java:75)
+	at Sighting.save(Sighting.java:73)
 	at SightingTest.all_returnsAllInstancesOfSighting_true(SightingTest.java:67)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
@@ -209,7 +209,7 @@ org.postgresql.util.PSQLException: Cannot rollback when autoCommit is enabled.
 	at org.sql2o.Connection.rollback(Connection.java:115)
 	at org.sql2o.Connection.onException(Connection.java:56)
 	at org.sql2o.Query.executeUpdate(Query.java:526)
-	at Sighting.save(Sighting.java:75)
+	at Sighting.save(Sighting.java:73)
 	at SightingTest.find_returnsSightingWithSameId_secondSighting(SightingTest.java:77)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)

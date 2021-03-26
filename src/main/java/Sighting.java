@@ -41,10 +41,8 @@ public class Sighting {
         this.id = id;
     }
 
-    public int getAnimalid() {
-        return id;
+    public int getAnimalid() { return id;
     }
-
     public void setAnimalid(int id) {
         this.id = id;
     }
