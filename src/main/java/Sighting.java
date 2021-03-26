@@ -9,15 +9,15 @@ import java.util.Objects;
 
 public class Sighting {
     private String location;
-    private String rangername;
+    private String ranger;
     private int id;
     public int animalid;
     public Date date= new Date();
     public Timestamp time;
 
-    public Sighting(String location,String rangername,int animalid){
+    public Sighting(String location,String ranger, int animalid){
         this.location=location;
-        this.rangername=rangername;
+        this.ranger=ranger;
         this.animalid=animalid;
         this.time = new Timestamp(date.getTime());
     }
@@ -31,11 +31,11 @@ public class Sighting {
     }
 
     public String getRangername() {
-        return rangername;
+        return ranger;
     }
 
     public void setRangername(String rangername) {
-        this.rangername = rangername;
+        this.ranger = rangername;
     }
 
     public void setId(int id) {
@@ -68,10 +68,10 @@ public class Sighting {
     }
     public void save() {
         try(Connection con = DB.sql2o.open()) {
-            String sql = "INSERT INTO sightings (location, rangername, animalid) VALUES (:location, :rangername, :animalid)";
+            String sql = "INSERT INTO sightings (location, ranger, animalid) VALUES (:location, :ranger, :animalid)";
             this.id = (int) con.createQuery(sql, true)
                     .addParameter("location", this.location)
-                    .addParameter("rangername", this.rangername)
+                    .addParameter("ranger", this.ranger)
                     .addParameter("animalid", this.animalid)
                     .executeUpdate()
                     .getKey();
@@ -124,11 +124,11 @@ public class Sighting {
         Sighting sighting = (Sighting) o;
         return animalid == sighting.animalid &&
                 Objects.equals(location, sighting.location) &&
-                Objects.equals(rangername, sighting.rangername);
+                Objects.equals(ranger, sighting.ranger);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(location, rangername, animalid);
+        return Objects.hash(location, ranger, animalid);
     }
 }

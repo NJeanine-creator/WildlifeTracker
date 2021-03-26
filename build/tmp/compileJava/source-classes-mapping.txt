@@ -1,7 +1,7 @@
-App.java
- App
 Sighting.java
  Sighting
+App.java
+ App
 DB.java
  DB
 Animal.java

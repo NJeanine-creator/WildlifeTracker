@@ -3,12 +3,12 @@ plugins {
     id 'application'
 }
 
-group 'com.betahood'
+group 'WildlifeTracker'
 version '1.0-SNAPSHOT'
 
 
 sourceCompatibility = 1.8
-applicationName = "betahood-wildlife-tracker"
+applicationName = "WildlifeTracker"
 mainClassName = "App"
 
 repositories {
