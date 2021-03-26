@@ -133,9 +133,9 @@ public class App {
         post("/posts/sightings/new",(req, res) ->{
             Map<String, Object> model = new HashMap<>();
             String location = req.queryParams("location");
-            String rangername = req.queryParams("rangername");
-            int animalid = Integer.parseInt(req.queryParams("animalid"));
-            Sighting sighting = new Sighting(location,rangername,animalid);
+            String ranger = req.queryParams("ranger");
+            int id = Integer.parseInt(req.queryParams("id"));
+            Sighting sighting = new Sighting(location,ranger,id);
             sighting.save();
             model.put("sightings",Sighting.all());
             model.put("animals",EndangeredAnimal.all());

@@ -6,14 +6,14 @@ import java.util.Objects;
 
 public class EndangeredAnimal extends Animal{
 
-    private String health;
+    private String healthy;
     private String age;
     public static final String DATABASE_TYPE = "endangered";
 
-    public EndangeredAnimal(String name,String health,String age){
+    public EndangeredAnimal(String name,String healthy,String age){
         super(name);
         this.name=name;
-        this.health=health;
+        this.healthy=healthy;
         this.age=age;
         type=DATABASE_TYPE;
     }
@@ -23,7 +23,7 @@ public class EndangeredAnimal extends Animal{
     }
 
     public String getHealth() {
-        return health;
+        return healthy;
     }
 
     public String getAge() {
@@ -38,8 +38,8 @@ public class EndangeredAnimal extends Animal{
         this.name = name;
     }
 
-    public void setHealth(String health) {
-        this.health = health;
+    public void setHealth(String healthy) {
+        this.healthy = healthy;
     }
 
     public void setAge(String age) {
@@ -66,10 +66,10 @@ public class EndangeredAnimal extends Animal{
     }
     public void save() {
         try(Connection con = DB.sql2o.open()) {
-            String sql = "INSERT INTO animals (name, health, age) VALUES (:name, :health, :age)";
+            String sql = "INSERT INTO animals (name, healthy, age) VALUES (:name, :healthy, :age)";
             this.id = (int) con.createQuery(sql, true)
                     .addParameter("name", this.name)
-                    .addParameter("health", this.health)
+                    .addParameter("healthy", this.healthy)
                     .addParameter("age", this.age)
                     //.addParameter("type", this.type)
                     .executeUpdate()
@@ -80,14 +80,14 @@ public class EndangeredAnimal extends Animal{
         List<Object> allAnimals = new ArrayList<Object>();
 
         try(Connection con = DB.sql2o.open()) {
-            String sqlSighting = "SELECT * FROM animals WHERE animalid=:id";
+            String sqlSighting = "SELECT * FROM animals WHERE id=:id";
             List<Sighting> animals = con.createQuery(sqlSighting)
                     .addParameter("id", this.id)
                     .throwOnMappingFailure(false)
                     .executeAndFetch(Sighting.class);
             allAnimals.addAll(animals);
 
-            String sqlEndangeredAnimal = "SELECT * FROM animals WHERE animalid=:id AND type='endangered';";
+            String sqlEndangeredAnimal = "SELECT * FROM animals WHERE id=:id AND type='endangered';";
             List<Sighting> endangeredAnimals = con.createQuery(sqlEndangeredAnimal)
                     .addParameter("id", this.id)
                     .throwOnMappingFailure(false)
@@ -103,13 +103,13 @@ public class EndangeredAnimal extends Animal{
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         EndangeredAnimal that = (EndangeredAnimal) o;
-        return Objects.equals(health, that.health) &&
+        return Objects.equals(healthy, that.healthy) &&
                 Objects.equals(age, that.age);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), health, age);
+        return Objects.hash(super.hashCode(), healthy, age);
     }
 
 

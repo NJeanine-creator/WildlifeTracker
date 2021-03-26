@@ -11,14 +11,13 @@ public class Sighting {
     private String location;
     private String ranger;
     private int id;
-    public int animalid;
     public Date date= new Date();
     public Timestamp time;
 
-    public Sighting(String location,String ranger, int animalid){
+    public Sighting(String location,String ranger, int id){
         this.location=location;
         this.ranger=ranger;
-        this.animalid=animalid;
+        this.id=id;
         this.time = new Timestamp(date.getTime());
     }
 
@@ -34,8 +33,8 @@ public class Sighting {
         return ranger;
     }
 
-    public void setRangername(String rangername) {
-        this.ranger = rangername;
+    public void setRangername(String ranger) {
+        this.ranger = ranger;
     }
 
     public void setId(int id) {
@@ -43,11 +42,11 @@ public class Sighting {
     }
 
     public int getAnimalid() {
-        return animalid;
+        return id;
     }
 
-    public void setAnimalid(int animalid) {
-        this.animalid = animalid;
+    public void setAnimalid(int id) {
+        this.id = id;
     }
 
     public int getId() {
@@ -68,11 +67,11 @@ public class Sighting {
     }
     public void save() {
         try(Connection con = DB.sql2o.open()) {
-            String sql = "INSERT INTO sightings (location, ranger, animalid) VALUES (:location, :ranger, :animalid)";
+            String sql = "INSERT INTO sightings (location, ranger,id) VALUES (:location, :ranger, :id)";
             this.id = (int) con.createQuery(sql, true)
                     .addParameter("location", this.location)
                     .addParameter("ranger", this.ranger)
-                    .addParameter("animalid", this.animalid)
+                    .addParameter("id", this.id)
                     .executeUpdate()
                     .getKey();
         }
@@ -99,14 +98,14 @@ public class Sighting {
         List<Object> allSightings = new ArrayList<Object>();
 
         try(Connection con = DB.sql2o.open()) {
-            String sqlSighting = "SELECT * FROM sightings WHERE animalid=:id";
+            String sqlSighting = "SELECT * FROM sightings WHERE id=:id";
             List<Sighting> sightings = con.createQuery(sqlSighting)
                     .addParameter("id", this.id)
                     .throwOnMappingFailure(false)
                     .executeAndFetch(Sighting.class);
             allSightings.addAll(sightings);
 
-            String sqlEndangeredAnimal = "SELECT * FROM sightings WHERE animalid=:id AND type='endangered';";
+            String sqlEndangeredAnimal = "SELECT * FROM sightings WHERE id=:id AND type='endangered';";
             List<Sighting> endangeredSightings = con.createQuery(sqlSighting)
                     .addParameter("id", this.id)
                     .throwOnMappingFailure(false)
@@ -122,13 +121,13 @@ public class Sighting {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Sighting sighting = (Sighting) o;
-        return animalid == sighting.animalid &&
+        return id == sighting.id &&
                 Objects.equals(location, sighting.location) &&
                 Objects.equals(ranger, sighting.ranger);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(location, ranger, animalid);
+        return Objects.hash(location, ranger, id);
     }
 }
