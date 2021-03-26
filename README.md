@@ -26,14 +26,9 @@ An application that allows Rangers to track wildlife sightings in the area.
 ##### Run these commands
 3. CREATE DATABASE wildlife_tracker;
 4. \c wildlife_tracker;
-   
-5. CREATE TABLE animals (id SERIAL PRIMARY KEY, name VARCHAR,age VARCHAR, endangered VARCHAR, healthy VARCHAR);
-   --CREATE TABLE sightings (id SERIAL PRIMARY KEY, name VARCHAR);
-6. CREATE DATABASE wildlife_tracker_test WITH TEMPLATE wildlife_tracker_test;
-   
-7. CREATE TABLE sightings (id SERIAL PRIMARY KEY, location VARCHAR, ranger VARCHAR);
-8. CREATE TABLE animals (id SERIAL PRIMARY KEY,name VARCHAR,age VARCHAR,endangered VARCHAR,healthy VARCHAR);
-9. CREATE DATABASE wildlife_tracker_test WITH TEMPLATE wildlife_tracker;
+5. CREATE TABLE animals (id serial PRIMARY KEY, name varchar,age varchar, healthy varchar,endangered varchar );
+6. CREATE TABLE sightings (id serial PRIMARY KEY, location varchar ,ranger varchar);
+7. CREATE DATABASE wildlife_tracker_test WITH TEMPLATE wildlife_tracker;
 
 ## User Requirements
 
