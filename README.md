@@ -1,8 +1,7 @@
 # Wildlife Tracker
 
 #### By **Jeanine NISHIMWE**
-![](screenshots/)
-![]()
+![Alt text](src/main/resources/public/images/demo.png?raw=true "")
 ## Description
 
 An application that allows Rangers to track wildlife sightings in the area.

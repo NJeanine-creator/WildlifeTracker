@@ -1,0 +1,62 @@
+{{#partial "content"}}
+<style>
+    h2 {
+  position: relative;
+  text-transform: uppercase;
+  letter-spacing: 6px;
+  font-size: 3vw;
+  font-weight: 900;
+  text-decoration: none;
+  color: white;
+  display: inline-block;
+  background-size: 120% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;
+  -ms-background-clip: text;
+  -ms-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  background-image: linear-gradient(45deg,
+                    #7794ff,
+                    #44107A,
+                    #FF1361,
+                    #FFF800);
+  animation: .8s shake infinite alternate;
+}
+@keyframes shake {
+  0% { transform: skewX(-15deg); }
+  5% { transform: skewX(15deg); }
+  10% { transform: skewX(-15deg); }
+  15% { transform: skewX(15deg); }
+  20% { transform: skewX(0deg); }
+  100% { transform: skewX(0deg); }
+}
+</style>
+    <center><div class="container-fluid" id="welcome">
+        <h1><strong>“The greatness of a nation and its moral progress can be judged by the way its animals are treated.”</strong>
+            </h1>
+        <h3 style=""><strong> *- Mahatma Gandhi -*</strong></h3><br>
+        <br>
+        <h2><strong>Welcome to Wild Life Tracker!!.</strong> </h2>
+        <br><br>
+        <h3 style="font-size:40px;"><u><strong>Help Them to find a Home </strong></u></h3>
+    <br><br>
+        <div class="row" id="bSite">
+            <div class="col-md-6">
+                <a href="/posts/animals/new" style="color:White; background-color:green"; class="btn btn-outline-success btn-lg">Report A Sighting</a>
+            </div>
+            <div class="col-md-6">
+                <a href="/posts/endangered-animals/new" style="color:White; background-color:green"; class="btn btn-outline-success btn-lg">Report An Endangered Sighting</a>
+            </div>
+
+        </div>
+
+    </div>
+    </center>
+
+
+
+{{/partial}}
+{{>layout.hbs}}

@@ -1,0 +1,26 @@
+{{#partial "content"}}
+    <div >
+        <h1>Sightings</h1>
+        <hr>
+        {{#if sightings}}
+            <ul>
+                {{#each sightings}}
+                    <li id="site"><a href="/sighting-details/{{id}}">{{ location }}</a></li>
+                    <hr>
+                {{/each}}
+
+            </ul>
+
+
+
+        {{else}}
+            <p style="color:white;">No Sightings Yet.</p>
+        {{/if}}
+
+
+
+    </div>
+
+{{/partial}}
+
+{{> layout.hbs}}

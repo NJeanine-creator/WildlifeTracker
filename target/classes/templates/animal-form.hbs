@@ -1,0 +1,20 @@
+{{#partial "content"}}
+
+    <h2>Add Animal</h2>
+    <div >
+        <form action="/posts/animals/new" method="post" >
+            <label for="name">Animal Name</label>
+            <input id="name" name="name" type="text" >
+            <label for="name">Animal Age</label>
+            <select>
+                <option value="newborn">newborn</option>
+                <option value="young">young</option>
+                <option value="adult">adult</option>
+            </select>
+            <br>
+            <button id="bSite" style="color:White;background-color:green"; type="submit" class="btn btn-outline-success">Submit</button>
+        </form>
+    </div>
+{{/partial}}
+
+{{> layout.hbs}}
